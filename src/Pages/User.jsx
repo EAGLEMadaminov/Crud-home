@@ -11,8 +11,11 @@ const User = () => {
     let { data } = await axios.get("/users");
     setUsers(data);
   };
-  const showUserFunc = (id) => {
-    navigate(`/users/${id}`);
+  const showUserFunc = (id, e) => {
+    console.log(e.target.id);
+    if (e.target.id !== `button-${id}`) {
+      navigate(`/users/${id}`);
+    }
   };
 
   const deleteUserByIdFunc = async (id) => {
@@ -110,7 +113,7 @@ const User = () => {
               <tr
                 key={index + 1}
                 className="hover:cursor-pointer hover:bg-gray-200"
-                onClick={() => showUserFunc(user.id)}
+                onClick={(e) => showUserFunc(user.id, e)}
               >
                 <td className="p-2 mx-3">{index + 1}</td>
                 <td className="p-2 mx-3">{user.name}</td>
@@ -121,6 +124,7 @@ const User = () => {
 
                 <td className="p-2 mx-3">
                   <button
+                    id={`button-${user.id}`}
                     onClick={() => deleteUserByIdFunc(user.id)}
                     className="bg-[#EF4444]  p-2 rounded-lg text-white px-3"
                   >

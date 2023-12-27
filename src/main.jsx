@@ -4,8 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 import axios from "axios";
 
-axios.defaults.baseURL =
-  "https://my-json-server.typicode.com/EAGLEMadaminov/json-server";
+axios.defaults.baseURL = "http://localhost:5050";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
